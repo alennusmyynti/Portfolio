@@ -1,26 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Omakuva from "./omakuva.js"
-import Header from "./header.js"
-import Element from "./element.js"
-import FluidGrid from 'react-fluid-grid'
+import Omakuva from "./omakuva.js";
+import Header from "./header.js";
+
 import "./style.css"
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/layout.js";
+import Home from "./pages/home.js";
+import CV from "./pages/cv.js";
+import Contact from "./pages/contact.js";
+import NoPage from "./pages/noPage.js";
 
 const myPage = <div>
 <Header/>
-<div class="fluid_container">
-  <FluidGrid>
-    <Element projekti="Testiprojekti"
-    image="https://cdn.pixabay.com/photo/2020/03/21/14/45/moon-4954228_1280.jpg"
-    text="Tämä on minun tekeleeni vähän väsyneenä"
-    link="https://unity.com/"/>
-    <Element projekti="Fluidin testausta varten"
-    image="https://kodarit.com/wp-content/uploads/2021/12/jalkapallopeli-750x350.png"
-    text="Tämä on minun tekeleeni pirteänä"
-    link="https://unity.com/"/>
-  </FluidGrid>
-</div>
+<BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="CV" element={<CV />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
 </div>
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -16,7 +16,7 @@ const myPage = <div>
 <Header/>
 <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/Portfolio" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="CV" element={<CV />} />
           <Route path="contact" element={<Contact />} />
